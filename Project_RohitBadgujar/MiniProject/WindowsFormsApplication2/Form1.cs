@@ -81,7 +81,7 @@ namespace WindowsFormsApplication2
                 string conStr = ConfigurationManager.ConnectionStrings["WDBTESTConnectionString"].ToString();
                 SqlConnection con = new SqlConnection(conStr);
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("Select top 5 * from DailyGoldRate order by LastUpdatedDate desc", con);       //Get last Update top 5 record and display is DataGird
+                SqlCommand cmd1 = new SqlCommand("Select top 5 cast(Price AS FLOAT), LastUpdatedDate from DailyGoldRate order by LastUpdatedDate desc", con);       //Get last Update top 5 record and display is DataGird
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd1;
                 DataTable dt = new DataTable();
@@ -95,7 +95,7 @@ namespace WindowsFormsApplication2
                 MessageBox.Show(ex.ToString());
             }
         }
-        private bool ValidateGoldPrice() {
+       private bool ValidateGoldPrice() {
             //Validate price upto 5 decimal
             if (txtPrice.Text == "") {
                 MessageBox.Show("Enter Gold Price for day :" + dateTimePicker1.Text );
@@ -106,10 +106,15 @@ namespace WindowsFormsApplication2
             string v = (d - n).ToString();
             string[] parts = v.Split('.');
 
-            if (parts[1].Length >= 5)
+            if (parts.Length > 1)
             {
-                MessageBox.Show("Enter Gold Price upto 3 Decimal");
-                return false;
+                if (parts[1].Length >= 5)
+                {
+                    MessageBox.Show("Enter Gold Price upto 3 Decimal");
+                    return false;
+                }
+                else return true;
+
             }
             else {
                 return true;
