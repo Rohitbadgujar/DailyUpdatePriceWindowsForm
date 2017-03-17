@@ -15,12 +15,12 @@ BEGIN
 SET @Flag  = (SELECT Price FROM DailyGoldRate WHERE LastUpdatedDate = CAST(@Day as Date))
 IF @Flag IS NOT NULL
 	BEGIN
-		UPDATE DailyGoldRate SET Price = @Price WHERE LastUpdatedDate = CAST(@Day as Date) -- Update IF Date EXIST
+		UPDATE DailyGoldRate SET Price = cast(@Price  AS FLOAT) WHERE LastUpdatedDate = CAST(@Day as Date) -- Update IF Date EXIST
 		SET @Flag = 1
 	END
 ELSE
 	BEGIN
-		INSERT INTO DailyGoldRate VALUES (@Price,@day) -- -- INSERT IF NEW RECORD
+		INSERT INTO DailyGoldRate VALUES (cast(@Price  AS FLOAT),@day) -- -- INSERT IF NEW RECORD
 		SET @Flag = 0
 	END
 	RETURN @Flag        -- Update/Insert Flag.
