@@ -33,9 +33,6 @@ arr[6] = 5;
             printf("\nSwapped Location %d number - %d with location %d and number - %d element" ,i,arr[i],i+1,arr[i+1]);
         }
     }
-    
-
-    //code samjaa..yup
    printf("\n\nArray Elements are : " );
    
     for(i=0;i<n;i++){
