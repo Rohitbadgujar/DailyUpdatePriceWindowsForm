@@ -1,0 +1,52 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello World");
+    int arr[10],n,i,ele,temp=0,j;
+arr[0] = 88;
+arr[1] = 4;
+arr[2] = 10;
+arr[3] = 2;
+arr[4] = 11;
+arr[5] = 2;
+arr[6] = 5;
+    i=0;
+    n = 7;
+    
+    while(j!=n){
+        printf("\n\nOuter LOOP %d Iteration", j);//ohh samja..isko copy karo with o/p... muje bata 88 kaha gayab ho gaya :P.. 88?
+    for(i=0;i<n-1;i++){
+        
+        if(arr[i] > arr[i+1]){
+            temp = arr[i];//haww..kidharr gayaaaa..woh 0 ko swap kr rahaaa..0 kaha se aya..
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+            printf("\nSwapped Location %d number - %d with location %d and number - %d element" ,i,arr[i],i+1,arr[i+1]);
+        }
+    }
+    
+
+    //code samjaa..yup
+   printf("\n\nArray Elements are : " );
+   
+    for(i=0;i<n;i++){
+        printf(" %d ",arr[i] );
+    }
+    j++;
+    }
+    return 0; 
+
+
+}
+
+
+
